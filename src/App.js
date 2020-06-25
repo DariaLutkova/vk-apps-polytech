@@ -7,13 +7,9 @@ import Icon28BrainOutline from '@vkontakte/icons/dist/28/brain_outline';
 import Icon28PlaceOutline from '@vkontakte/icons/dist/28/place_outline';
 import Icon28PinOutline from '@vkontakte/icons/dist/28/pin_outline';
 
-import Home from './panels/FITHome/';
+import FitNews from './panels/FitNews'
 
 class App extends React.Component {
-  // const [activePanel, setActivePanel] = useState('home');
-  // const [fetchedUser, setUser] = useState(null);
-  // const [activeModal, setActiveModal] = useState(null);
-
   state = {
   	activePanel: 'feed',
   	activeTab: 'feed'
@@ -24,23 +20,6 @@ class App extends React.Component {
   		activeTab:  e.currentTarget.dataset.story,
   	})
   }
-
-  /*useEffect(() => {
-    bridge.subscribe(({ detail: { type, data }}) => {
-      if (type === 'VKWebAppUpdateConfig') {
-        const schemeAttribute = document.createAttribute('scheme');
-        schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-        document.body.attributes.setNamedItem(schemeAttribute);
-      }
-    });*/
-    /*async function fetchData() {
-      const user = await bridge.send('VKWebAppGetUserInfo');
-      setUser(user);
-      setPopout(null);
-    }
-    fetchData();*/
-    // setActiveModal('faq');
-  // }, []);
 
   render() {
   	  return (
@@ -73,9 +52,7 @@ class App extends React.Component {
         </Tabbar>
       }>
         <View activePanel={this.state.activeTab}>
-          <Panel id="feed">
-            <PanelHeader>Новости</PanelHeader>
-          </Panel>
+          <FitNews id="feed" />
           <Panel id="discover">
             <PanelHeader>Направления учебы</PanelHeader>
           </Panel>
