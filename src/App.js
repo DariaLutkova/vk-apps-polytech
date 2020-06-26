@@ -8,6 +8,7 @@ import Icon28PlaceOutline from '@vkontakte/icons/dist/28/place_outline';
 import Icon28PinOutline from '@vkontakte/icons/dist/28/pin_outline';
 
 import FitNews from './panels/FitNews'
+import Schedule from "./panels/Schedule";
 
 class App extends React.Component {
   state = {
@@ -59,9 +60,7 @@ class App extends React.Component {
           <Panel id="places">
             <PanelHeader>Где подать документы</PanelHeader>
           </Panel>
-          <Panel id="schedule">
-            <PanelHeader>Расписание</PanelHeader>
-          </Panel>
+          <Schedule id="schedule" />
         </View>
       </Epic>
   );
