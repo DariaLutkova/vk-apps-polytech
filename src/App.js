@@ -1,5 +1,5 @@
 import React from 'react';
-import bridge from '@vkontakte/vk-bridge';
+// import bridge from '@vkontakte/vk-bridge';
 import { View, Epic, Tabbar, TabbarItem, Panel, PanelHeader } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import Icon28NewsfeedOutline from '@vkontakte/icons/dist/28/newsfeed_outline';
@@ -13,13 +13,13 @@ class App extends React.Component {
   state = {
   	activePanel: 'feed',
   	activeTab: 'feed'
-  }
+  };
 
   onStoryChange = (e) => {
   	this.setState({
   		activeTab:  e.currentTarget.dataset.story,
   	})
-  }
+  };
 
   render() {
   	  return (
