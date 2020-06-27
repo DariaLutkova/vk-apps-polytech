@@ -1,0 +1,39 @@
+.infoBlockWrapper {
+  display: flex;
+  margin: 0 10px;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8px;
+  min-width: 200px;
+  border-radius: 8px;
+  padding: 8px;
+  justify-content: center;
+}
+
+.infoBlock:first-child {
+  background-color: #f4eeff;
+}
+
+.infoBlock:nth-child(2n) {
+  background-color: #fcf7bb;
+}
+
+.infoBlock:nth-child(3n) {
+  background-color: #f6e5f5;
+}
+
+.infoBlock:nth-child(4n) {
+  background-color: #c2e8ce;
+}
+
+.infoBlock:last-child {
+  background-color: #daf1f9;
+}
+
+.bigNumber {
+  font-size: 20px;
+  font-weight: bold;
+}
