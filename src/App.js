@@ -19,7 +19,6 @@ class App extends React.Component {
   	activeTab: 'feed',
     activeModal: null,
     currentGroup: '163-422',
-    selectedDay: new Date().getDay() - 1,
     schedule: null
   };
 
