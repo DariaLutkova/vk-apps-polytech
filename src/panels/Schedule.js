@@ -14,7 +14,7 @@ const Schedule = ({ schedule, getSchedule }) => {
     const currentRecord = schedule ? schedule[weekDay] : null;
 
     return (
-        <Panel id="feed">
+        <Panel id="schedule">
             <PanelHeader>Расписание</PanelHeader>
             <Tabs>
               <HorizontalScroll>
