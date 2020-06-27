@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Tabs, TabsItem, HorizontalScroll, Panel, PanelHeader} from '@vkontakte/vkui';
+import {Tabs, TabsItem, HorizontalScroll, Panel, PanelHeader, Gallery, Card} from '@vkontakte/vkui';
 import Record from "../components/Record";
 import "../styles/Schedule.css";
 
@@ -7,7 +7,7 @@ const weekDays = ['Понедельник', 'Вторник', 'Среда', 'Ч�
 
 const Schedule = ({ schedule, getSchedule }) => {
     useEffect(() => {
-        getSchedule();
+        if(!schedule) getSchedule();
     }, []);
 
     const [weekDay, setWeekDay] = useState(new Date().getDay() - 1);
@@ -22,7 +22,7 @@ const Schedule = ({ schedule, getSchedule }) => {
               </HorizontalScroll>
             </Tabs>
             <div className="recordWrapper">
-              {currentRecord && <Record key={currentRecord[0]} recordObj={currentRecord[1]}/>}
+              {currentRecord && <Record recordObj={currentRecord[1]}/>}
             </div>
         </Panel>
     );
