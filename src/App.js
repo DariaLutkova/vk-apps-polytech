@@ -9,11 +9,30 @@ import Icon28PinOutline from '@vkontakte/icons/dist/28/pin_outline';
 
 import FitNews from './panels/FitNews'
 import Schedule from "./panels/Schedule";
+import {getCurrentWeek} from "./utils/schedule-utils";
 
 class App extends React.Component {
   state = {
   	activePanel: 'feed',
-  	activeTab: 'feed'
+  	activeTab: 'feed',
+    currentGroup: '163-422',
+    selectedDay: new Date().getDay() - 1,
+    schedule: null
+  };
+
+  getSchedule = async () => {
+    const resp = await fetch(`https://onepix.dev/recoby?referer=https://rasp.dmami.ru&url=https://rasp.dmami.ru/site/group?group=${this.state.currentGroup}&session=0`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    const json = await resp.json();
+
+    this.setState({
+      schedule: json.grid ? getCurrentWeek(json.grid) : null
+    });
   };
 
   onStoryChange = (e) => {
@@ -60,7 +79,7 @@ class App extends React.Component {
           <Panel id="places">
             <PanelHeader>Где подать документы</PanelHeader>
           </Panel>
-          <Schedule id="schedule" />
+          <Schedule id="schedule" getSchedule={this.getSchedule} {...this.state}/>
         </View>
       </Epic>
   );

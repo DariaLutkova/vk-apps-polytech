@@ -1,0 +1,4 @@
+.recordWrapper {
+  margin: 25px auto;
+  width: calc(100% - 40px);
+}

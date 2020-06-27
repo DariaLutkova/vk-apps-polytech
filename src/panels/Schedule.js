@@ -1,18 +1,29 @@
-import React from 'react';
-import { Panel, PanelHeader } from '@vkontakte/vkui';
+import React, {useEffect, useState} from 'react';
+import {Tabs, TabsItem, HorizontalScroll, Panel, PanelHeader} from '@vkontakte/vkui';
+import Record from "../components/Record";
+import "../styles/Schedule.css";
 
-const Schedule = () => {
-    fetch('https://onepix.dev/recoby?referer=https://rasp.dmami.ru&url=https://rasp.dmami.ru/site/group?group=181-321&session=0', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    });
+const weekDays = ['Понедельник', 'Вторник', 'Среда', 'Чертверг', 'Пятница', 'Суббота'];
+
+const Schedule = ({ schedule, getSchedule }) => {
+    useEffect(() => {
+        getSchedule();
+    }, []);
+
+    const [weekDay, setWeekDay] = useState(new Date().getDay() - 1);
+    const currentRecord = schedule ? schedule[weekDay] : null;
 
     return (
         <Panel id="feed">
             <PanelHeader>Расписание</PanelHeader>
-            <div>Ha</div>
+            <Tabs>
+              <HorizontalScroll>
+                {weekDays.map((day, id)=><TabsItem key={day} onClick={ () => setWeekDay(id)} selected={id===weekDay}>{day}</TabsItem>)}
+              </HorizontalScroll>
+            </Tabs>
+            <div className="recordWrapper">
+              {currentRecord && <Record key={currentRecord[0]} recordObj={currentRecord[1]}/>}
+            </div>
         </Panel>
     );
 };

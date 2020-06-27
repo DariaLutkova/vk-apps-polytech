@@ -1,0 +1,32 @@
+.record {
+  padding: 5px 15px;
+}
+.record-lesson {
+  margin: 10px 0;
+}
+.record-tag {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 5px;
+}
+.record-tag.lecture {
+  color: #fff;
+  background-color: #69baa5;
+}
+.record-tag.practice {
+  color: #fff;
+  background-color: #757182;
+}
+.record-tag.lab {
+  color: #fff;
+  background-color: #fabb2f;
+}
+.record-tag.credit {
+  color: #fff;
+  background-color: #7465cf;
+}
+.record-tag.exam {
+  color: #fff;
+  background-color: #e75e9f;
+}
