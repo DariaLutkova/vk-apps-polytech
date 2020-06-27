@@ -1,26 +1,61 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { ModalRoot, ModalCard } from '@vkontakte/vkui';
-import Icon56FireOutline from '@vkontakte/icons/dist/56/fire_outline';
+import { ModalRoot, ModalPage, ModalPageHeader, Group, RichCell, Header, HorizontalScroll, Avatar } from '@vkontakte/vkui';
+import Icon36Done from '@vkontakte/icons/dist/36/done';
+import { faculties } from './facultyInfo.js';
 
-const FITModal = ({ text, isActive, onClose }) => {
+import styles from './styles.module.css';
+
+const FITModal = ({ activeModal, onClose }) => {
   return (
-    <ModalRoot activeModal={isActive}>
-        <ModalCard 
-        id="faq"
-        onClose={onClose}
-        icon={<Icon56FireOutline />}
-        header="Добро пожаловать на ФИТ!"
-        caption="Крутой IT-специалист или хочешь им стать? Хочешь прокачать свои soft и hard скиллы? Не можешь жить без проектов и грезешь о Кремниевой Доллине? Тогда давай знакомится!"
-        actions={[{
-          title: 'Узнать больше',
-          mode: 'primary',
-          action: () => onClose()
-        }]}
-        >
-          </ModalCard>
-      </ModalRoot>
+    <ModalRoot activeModal={activeModal} onClose={onClose}>
+      {
+        faculties.map(fac => (
+          <ModalPage id={fac.id} key={fac.id} onClose={onClose} header={<ModalPageHeader>{fac.title}</ModalPageHeader>}>
+            <Group header={<Header mode="secondary">Вы научитесь</Header>}>
+              {
+                fac.learn.map(skill =>
+                  <RichCell
+                    key={skill}
+                    disabled
+                    multiline
+                    before={<Icon36Done style={{ marginRight: '10px' }} />}
+                    text={skill}
+                  />
+                  )
+              }
+            </Group>
+            <Group header={<Header mode="secondary">Для кого</Header>}>
+              {
+                fac.who.map(person =>
+                  <RichCell
+                    key={person.text}
+                    disabled
+                    multiline
+                    before={<Avatar size={36} mode="app" style={{ backgroundColor: 'transparent', borderColor: 'transparent' }} src={require(`../img/info/${person.img}.svg`)} />}
+                    text={person.text}
+                  />
+                )
+              }
+            </Group>
+            <Group style={{ paddingBottom: 8 }} header={<Header mode="secondary">Основные сведения</Header>}>
+              <HorizontalScroll>
+                <div className={styles.infoBlockWrapper}>
+                  {
+                    fac.info.map(inf =>
+                      <div className={styles.infoBlock} key={inf.title}>
+                        <div className={styles.bigNumber}>{inf.number}</div>
+                        <div>{inf.title}</div>
+                      </div>
+                    )
+                  }
+                </div>
+              </HorizontalScroll>
+            </Group>
+          </ModalPage>
+        ))
+      }
+    </ModalRoot>
     );
-}
+};
 
 export default FITModal;

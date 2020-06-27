@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import { Panel, PanelHeader, Group, Banner, Header, Avatar, Link } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Group, Banner, Header, Avatar, Link, Spinner } from '@vkontakte/vkui';
 import axios from 'axios';
 
-export default class FitNews extends React.Component {
+export default class FITNews extends React.Component {
   state = {
     banners: []
   };
@@ -22,10 +22,15 @@ export default class FitNews extends React.Component {
       <Panel id="feed">
         <PanelHeader>Новости</PanelHeader>
         <Group
-          header={<Header mode="secondary">Самое свежее от факультета информационных технологий!</Header>}
+          header={<Header mode="secondary">Самое свежее от флагмана проектной деятельности!</Header>}
         >
         {
+          !this.state.banners.length && 
+           <Spinner size="large" style={{ marginTop: 80 }} />
+        }
+        {
           this.state.banners.map(banner => (
+            banner.text &&
             <Link  key={banner.id} href={`https://vk.com/moscowpolytech?w=wall${banner.owner_id}_${banner.vk_id}`}>
              <Banner
               before={banner.photos.length !== 0 && <Avatar size={96} style={{ objectFit: 'scale-down' }} mode="image" src={banner.photos[0].photo_604} />}
