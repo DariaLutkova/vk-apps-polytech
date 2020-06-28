@@ -1,16 +1,16 @@
 import React from 'react';
-// import bridge from '@vkontakte/vk-bridge';
-import { View, Epic, Tabbar, TabbarItem, Panel, PanelHeader } from '@vkontakte/vkui';
+import { View, Epic, Tabbar, TabbarItem } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import Icon28NewsfeedOutline from '@vkontakte/icons/dist/28/newsfeed_outline';
 import Icon28BrainOutline from '@vkontakte/icons/dist/28/brain_outline';
-import Icon28PlaceOutline from '@vkontakte/icons/dist/28/place_outline';
+import Icon28InfoOutline from '@vkontakte/icons/dist/28/info_outline';
 import Icon28PinOutline from '@vkontakte/icons/dist/28/pin_outline';
 
 import FITNews from './panels/FITNews';
 import FITDiscover from "./panels/FITDiscover";
 import FITModal from "./components/FITModal";
 import Schedule from "./panels/Schedule";
+import FITAbout from "./panels/FITAbout";
 import {getCurrentWeek} from "./utils/schedule-utils";
 
 class App extends React.Component {
@@ -67,25 +67,23 @@ class App extends React.Component {
           ><Icon28NewsfeedOutline /></TabbarItem>
           <TabbarItem
             onClick={this.onStoryChange}
-            selected={this.state.activeTab === 'places'}
-            data-story="places"
-            text="Подать док."
-          ><Icon28PlaceOutline /></TabbarItem>
-          <TabbarItem
-            onClick={this.onStoryChange}
             selected={this.state.activeTab === 'schedule'}
             data-story="schedule"
             text="Расписание"
           ><Icon28PinOutline /></TabbarItem>
+          <TabbarItem
+            onClick={this.onStoryChange}
+            selected={this.state.activeTab === 'about'}
+            data-story="about"
+            text="Информация"
+          ><Icon28InfoOutline /></TabbarItem>
         </Tabbar>
       }>
         <View activePanel={this.state.activeTab} modal={<FITModal activeModal={this.state.activeModal} onClose={() => this.handleModalOpen(null)} />}>
           <FITNews id="feed" />
           <FITDiscover id="discover" onModalOpen={this.handleModalOpen} />
-          <Panel id="places">
-            <PanelHeader>Где подать документы</PanelHeader>
-          </Panel>
           <Schedule id="schedule" getSchedule={this.getSchedule} {...this.state}/>
+          <FITAbout id="about"/>
         </View>
       </Epic>
   );
