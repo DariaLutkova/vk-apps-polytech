@@ -1,35 +1,28 @@
-.infoBlockWrapper {
-  display: flex;
-  margin: 0 10px;
-}
 
 .infoBlock {
   display: flex;
   flex-direction: column;
-  margin-right: 8px;
-  min-width: 200px;
-  border-radius: 8px;
-  padding: 8px;
+  padding: 8px 0 8px 40px;
   justify-content: center;
 }
 
-.infoBlock:first-child {
+.budge {
   background-color: #f4eeff;
 }
 
-.infoBlock:nth-child(2n) {
+.paid {
   background-color: #fcf7bb;
 }
 
-.infoBlock:nth-child(3n) {
+.ball {
   background-color: #f6e5f5;
 }
 
-.infoBlock:nth-child(4n) {
+.cost {
   background-color: #c2e8ce;
 }
 
-.infoBlock:last-child {
+.years {
   background-color: #daf1f9;
 }
 

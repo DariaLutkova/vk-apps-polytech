@@ -1,7 +1,8 @@
 import React from 'react';
-import { ModalRoot, ModalPage, ModalPageHeader, Group, RichCell, Header, HorizontalScroll, Avatar } from '@vkontakte/vkui';
+import { ModalRoot, ModalPage, ModalPageHeader, Group, RichCell, Header, Avatar, Gallery } from '@vkontakte/vkui';
 import Icon36Done from '@vkontakte/icons/dist/36/done';
 import { faculties } from './facultyInfo.js';
+import cn from 'classnames';
 
 import styles from './styles.module.css';
 
@@ -38,18 +39,21 @@ const FITModal = ({ activeModal, onClose }) => {
               }
             </Group>
             <Group style={{ paddingBottom: 8 }} header={<Header mode="secondary">Основные сведения</Header>}>
-              <HorizontalScroll>
-                <div className={styles.infoBlockWrapper}>
-                  {
-                    fac.info.map(inf =>
-                      <div className={styles.infoBlock} key={inf.title}>
-                        <div className={styles.bigNumber}>{inf.number}</div>
-                        <div>{inf.title}</div>
-                      </div>
-                    )
-                  }
-                </div>
-              </HorizontalScroll>
+              <Gallery
+                slideWidth="90%"
+                style={{ height: 150 }}
+                bullets="dark"
+                align="center"
+              >
+                {
+                  Object.keys(fac.info).map(inf =>
+                    <div className={cn(styles.infoBlock, styles[inf])} key={fac.info[inf].title}>
+                      <div className={styles.bigNumber}>{fac.info[inf].number}</div>
+                      <div>{fac.info[inf].title}</div>
+                    </div>
+                  )
+                }
+              </Gallery>
             </Group>
           </ModalPage>
         ))
