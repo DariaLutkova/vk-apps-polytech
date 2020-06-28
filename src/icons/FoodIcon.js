@@ -2,16 +2,16 @@ import React from 'react';
 
 const sizes = {
   's': {
-    width: '14px',
-    height: '14px',
+    width: '12px',
+    height: '12px',
   },
   'm': {
     width: '20px',
     height: '20px',
   },
   'l': {
-    width: '28px',
-    height: '28px',
+    width: '36px',
+    height: '36px',
   },
 };
 

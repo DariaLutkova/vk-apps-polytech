@@ -24,6 +24,10 @@
   color: #fff;
   background-color: #7465cf;
 }
+.record-tag.consult {
+  color: #fff;
+  background-color: #00bdb9;
+}
 .record-tag.exam {
   color: #fff;
   background-color: #e75e9f;

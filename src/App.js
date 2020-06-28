@@ -12,18 +12,24 @@ import FITDiscover from "./panels/FITDiscover";
 import FITModal from "./components/FITModal";
 import Schedule from "./panels/Schedule";
 import {getCurrentWeek} from "./utils/schedule-utils";
+import {getRequestUrl} from "./utils/request-utils";
 
 class App extends React.Component {
   state = {
   	activePanel: 'feed',
   	activeTab: 'feed',
     activeModal: null,
-    currentGroup: '163-422',
+    currentGroup: '181-321',
     schedule: null
   };
 
   getSchedule = async () => {
-    const resp = await fetch(`https://onepix.dev/recoby?referer=https://rasp.dmami.ru&url=https://rasp.dmami.ru/site/group?group=${this.state.currentGroup}&session=0`, {
+    const reqUrl = getRequestUrl({
+      referer: 'https://rasp.dmami.ru',
+      url: `https://rasp.dmami.ru/site/group?group=${this.state.currentGroup}&session=1`
+    });
+
+    const resp = await fetch(reqUrl, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

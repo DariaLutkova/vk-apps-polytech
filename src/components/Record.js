@@ -18,6 +18,9 @@ const tagsClasses = (tag) => {
     case 'Зачет':
       returnValue = 'credit';
       break;
+    case 'Консультация':
+      returnValue = 'consult';
+      break;
     case 'Экзамен':
       returnValue = 'exam';
       break;

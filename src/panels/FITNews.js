@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Panel, PanelHeader, Group, Banner, Header, Avatar, Link, Spinner } from '@vkontakte/vkui';
 import axios from 'axios';
+import {getRequestUrl} from "../utils/request-utils";
 
 export default class FITNews extends React.Component {
   state = {
@@ -9,7 +10,12 @@ export default class FITNews extends React.Component {
   };
 
   async componentDidMount() {
-    const res = await axios.get('https://onepix.dev/recoby?referer=https://fit.mospolytech.ru/feed&url=https://fit.mospolytech.ru/api/1.0/news/');
+    const reqUrl = getRequestUrl({
+      referer: 'https://fit.mospolytech.ru/feed',
+      url: 'https://fit.mospolytech.ru/api/1.0/news/'
+    });
+
+    const res = await axios.get(reqUrl);
 
     this.setState({
       banners: res.data,
@@ -25,7 +31,7 @@ export default class FITNews extends React.Component {
           header={<Header mode="secondary">Самое свежее от флагмана проектной деятельности!</Header>}
         >
         {
-          !this.state.banners.length && 
+          !this.state.banners.length &&
            <Spinner size="large" style={{ marginTop: 80 }} />
         }
         {
