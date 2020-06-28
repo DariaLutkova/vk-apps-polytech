@@ -1,4 +1,4 @@
-export const faculties = [
+export const bachelor = [
   {
     title: 'Интеграция и программирование в САПР',
     img: 'sapr',
@@ -22,5 +22,32 @@ export const faculties = [
   {
     title: 'Большие и открытые данные',
     img: 'bigData'
+  },
+];
+
+export const master = [
+  {
+    title: 'Компьютерная лингвистика и искусственный интеллект',
+    img: 'compLing',
+  },
+  {
+    title: 'Эргономика перспективных технических систем',
+    img: 'ergonomy'
+  },
+  {
+    title: 'Безопасность веб-приложений и облачных технологий',
+    img: 'cloudSeq'
+  },
+  {
+    title: 'Роботизированные беспилотные системы',
+    img: 'roboCar'
+  },
+  {
+    title: 'Медицинские интеллектуальные системы',
+    img: 'medSys'
+  },
+  {
+    title: 'Системная аналитика больших данных',
+    img: 'dataAnal'
   },
 ];
