@@ -51,3 +51,10 @@ export const master = [
     img: 'dataAnal'
   },
 ];
+
+export const speciality = [
+  {
+    title: 'Кибербезопасность веб-приложений',
+    img: 'cyberWeb',
+  }
+]

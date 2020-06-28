@@ -1,6 +1,6 @@
 import React from 'react';
 import { Panel, PanelHeader, Avatar, Group, Header, SimpleCell } from '@vkontakte/vkui';
-import { bachelor, master } from "./faculties";
+import { bachelor, master, speciality } from "./faculties";
 
 export default function FITDiscover ({ onModalOpen }) {
   return (
@@ -24,6 +24,17 @@ export default function FITDiscover ({ onModalOpen }) {
           master.map(mas =>
             <SimpleCell onClick={() => onModalOpen(mas.img)} key={mas.img} before={ <Avatar mode="app" size={48} src={require(`../img/faculties/${mas.img}.svg`)} />}>
             {mas.title}
+            </SimpleCell>
+          )
+        }
+      </Group>
+      <Group
+        header={<Header mode="secondary">Специалитет</Header>}
+      >
+        {
+          speciality.map(specialist =>
+            <SimpleCell onClick={() => onModalOpen(specialist.img)} key={specialist.img} before={ <Avatar mode="app" size={48} src={require(`../img/faculties/${specialist.img}.svg`)} />}>
+              {specialist.title}
             </SimpleCell>
           )
         }
