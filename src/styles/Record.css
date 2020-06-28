@@ -1,7 +1,5 @@
 .record {
-  padding: 5px 15px;
-}
-.record-lesson {
+  padding: 15px;
   margin: 10px 0;
 }
 .record-tag {
@@ -29,4 +27,13 @@
 .record-tag.exam {
   color: #fff;
   background-color: #e75e9f;
+}
+.record--lunch-wrapper {
+  display: flex;
+  margin: 15px 0;
+  color: var(--text_secondary);
+  fill: var(--icon_secondary);
+}
+.record--lunch-text {
+  margin-left: 5px;
 }
